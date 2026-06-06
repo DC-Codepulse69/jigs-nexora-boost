@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
 
+import config from '../../config.json';
+
+const sellAuthLink: string = config.sellAuthLink;
+const discordLink: string = config.discordLink;
+const telegramLink: string = config.telegramLink;
+
 interface NavbarProps {
   currentPage: 'home' | 'tos';
   onNavigate: (page: 'home' | 'tos', sectionId?: string) => void;
@@ -41,11 +47,10 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'py-4 glass-panel bg-opacity-70 border-b border-white/5 shadow-lg shadow-black/20'
-          : 'py-6 bg-transparent border-b border-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'py-4 glass-panel bg-opacity-70 border-b border-white/5 shadow-lg shadow-black/20'
+        : 'py-6 bg-transparent border-b border-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -73,9 +78,8 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
                 <button
                   key={link.label}
                   onClick={() => handleLinkClick(link.sectionId)}
-                  className={`text-sm font-medium tracking-wide transition-all duration-300 hover:text-primary relative py-1 cursor-pointer ${
-                    isActive ? 'text-primary' : 'text-gray-300'
-                  }`}
+                  className={`text-sm font-medium tracking-wide transition-all duration-300 hover:text-primary relative py-1 cursor-pointer ${isActive ? 'text-primary' : 'text-gray-300'
+                    }`}
                 >
                   {link.label}
                   {isActive && (
@@ -90,10 +94,12 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
           <div className="hidden md:flex items-center">
             <a
               href="#contact"
-              onClick={(e) => {
+              onClick={sellAuthLink ? () => window.open(sellAuthLink, '_blank') : (e) => {
                 e.preventDefault();
                 handleLinkClick('contact');
               }}
+              target={sellAuthLink ? "_blank" : undefined}
+              rel={sellAuthLink ? "noopener noreferrer" : undefined}
               className="px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide text-white bg-gradient-to-r from-primary to-secondary hover:from-primary/95 hover:to-secondary/95 shadow-md shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 scale-100 hover:scale-103 active:scale-97 cursor-pointer"
             >
               Order Now
@@ -114,9 +120,8 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
 
       {/* Mobile Navigation Dropdown */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 glass-panel border-b border-white/10 transition-all duration-300 ease-in-out ${
-          isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
-        }`}
+        className={`md:hidden absolute top-full left-0 right-0 glass-panel border-b border-white/10 transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
       >
         <div className="px-4 pt-2 pb-6 space-y-2">
           {navLinks.map((link) => (
@@ -131,10 +136,12 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
           <div className="pt-4 px-4">
             <a
               href="#contact"
-              onClick={(e) => {
+              onClick={sellAuthLink ? () => window.open(sellAuthLink, '_blank') : (e) => {
                 e.preventDefault();
                 handleLinkClick('contact');
               }}
+              target={sellAuthLink ? "_blank" : undefined}
+              rel={sellAuthLink ? "noopener noreferrer" : undefined}
               className="block w-full text-center py-3 rounded-xl text-base font-bold text-white bg-gradient-to-r from-primary to-secondary hover:from-primary/95 hover:to-secondary/95 shadow-lg shadow-primary/10"
             >
               Order Now

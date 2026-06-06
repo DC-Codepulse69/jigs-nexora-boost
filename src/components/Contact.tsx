@@ -1,12 +1,18 @@
 import { motion } from 'framer-motion';
 import { MessageSquare, Send, ShoppingCart, ExternalLink } from 'lucide-react';
 
+import config from '../../config.json';
+
+const sellAuthLink: string = config.sellAuthLink;
+const discordLink: string = config.discordLink;
+const telegramLink: string = config.telegramLink;
+
 export default function Contact() {
   const channels = [
     {
       title: 'Discord Server',
       desc: 'Join our guild to get live support, participate in giveaways, and view reviews from our community.',
-      link: '[DISCORD_LINK]',
+      link: discordLink,
       label: 'Join Discord',
       icon: MessageSquare,
       color: 'from-[#5865F2]/20 to-[#5865F2]/5 border-[#5865F2]/30 hover:border-[#5865F2]/80 text-[#5865F2]',
@@ -15,7 +21,7 @@ export default function Contact() {
     {
       title: 'Telegram Channel',
       desc: 'Subscribe to our channel for announcements, backup contact options, bulk inventory logs, and discounts.',
-      link: '[TELEGRAM_LINK]',
+      link: telegramLink,
       label: 'Message Telegram',
       icon: Send,
       color: 'from-[#229ED9]/20 to-[#229ED9]/5 border-[#229ED9]/30 hover:border-[#229ED9]/80 text-[#229ED9]',
@@ -24,7 +30,7 @@ export default function Contact() {
     {
       title: 'AutoBuy Store',
       desc: 'Purchase boosts, nitro, and account tokens instantly. Payments are securely managed through SellAuth.',
-      link: '[SELLAUTH_LINK]',
+      link: sellAuthLink,
       label: 'Purchase (SellAuth)',
       icon: ShoppingCart,
       color: 'from-[#6D5DFC]/20 to-[#6D5DFC]/5 border-[#6D5DFC]/30 hover:border-[#6D5DFC]/80 text-[#6D5DFC]',
@@ -41,7 +47,7 @@ export default function Contact() {
       <div className="absolute bottom-[10%] right-[-15%] w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[180px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Contact Head */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">Connect With Us</h2>
@@ -111,7 +117,7 @@ export default function Contact() {
           </p>
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="[DISCORD_LINK]"
+              href={discordLink}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
@@ -119,7 +125,7 @@ export default function Contact() {
               Contact Support
             </a>
             <a
-              href="[SELLAUTH_LINK]"
+              href={sellAuthLink}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-md shadow-primary/20 transition-all duration-300"

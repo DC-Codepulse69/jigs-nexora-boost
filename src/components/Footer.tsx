@@ -1,6 +1,12 @@
 import React from 'react';
 import { Zap, MessageSquare, Send, ShoppingBag } from 'lucide-react';
 
+import config from '../../config.json';
+
+const sellAuthLink: string = config.sellAuthLink;
+const discordLink: string = config.discordLink;
+const telegramLink: string = config.telegramLink;
+
 interface FooterProps {
   onNavigate: (page: 'home' | 'tos', sectionId?: string) => void;
 }
@@ -21,7 +27,7 @@ export default function Footer({ onNavigate }: FooterProps) {
     <footer className="bg-bg-dark border-t border-white/5 pt-16 pb-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Column 1: Brand */}
           <div className="md:col-span-2 space-y-4">
             <div
@@ -41,7 +47,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="[DISCORD_LINK]"
+                href={discordLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-white hover:bg-primary/20 hover:border-primary/40 border border-white/5 transition-all duration-300"
@@ -50,7 +56,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <MessageSquare className="w-4 h-4" />
               </a>
               <a
-                href="[TELEGRAM_LINK]"
+                href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-white hover:bg-accent/20 hover:border-accent/40 border border-white/5 transition-all duration-300"
@@ -59,7 +65,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <Send className="w-4 h-4" />
               </a>
               <a
-                href="[SELLAUTH_LINK]"
+                href={sellAuthLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-white hover:bg-secondary/20 hover:border-secondary/40 border border-white/5 transition-all duration-300"
@@ -108,7 +114,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="[DISCORD_LINK]"
+                  href={discordLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary text-sm transition-colors duration-200"
@@ -118,7 +124,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="[TELEGRAM_LINK]"
+                  href={telegramLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary text-sm transition-colors duration-200"
@@ -149,7 +155,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </a>
             <span className="text-gray-600 text-xs">|</span>
             <a
-              href="[SELLAUTH_LINK]"
+              href={sellAuthLink}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-400 text-xs transition-colors duration-200"

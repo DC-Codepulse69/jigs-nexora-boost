@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Sparkles, Mail, CheckCircle2, ShoppingBag } from 'lucide-react';
 
+import config from '../../config.json';
+
+const sellAuthLink: string = config.sellAuthLink;
+const discordLink: string = config.discordLink;
+const telegramLink: string = config.telegramLink;
+
+
 interface ServiceItem {
   title: string;
   price: string;
@@ -9,6 +16,7 @@ interface ServiceItem {
   description: string;
   features: string[];
   icon: React.ComponentType<any>;
+  link: string;
   popular?: boolean;
 }
 
@@ -20,6 +28,7 @@ export default function Services() {
       badge: 'Best Seller',
       description: 'Supercharge your server features, custom URL, and audio quality instantly.',
       features: ['Instant Auto-Delivery', 'Automatic Setup System', 'Stable & Reliable Service'],
+      link: sellAuthLink,
       icon: Zap,
       popular: true,
     },
@@ -29,6 +38,7 @@ export default function Services() {
       badge: 'Hot Deals',
       description: 'Unlock special custom emojis, profile themes, banners, and massive uploads.',
       features: ['Various Nitro Tiers', 'Extremely Fast Fulfillment', 'Safe Account Activation'],
+      link: sellAuthLink,
       icon: Sparkles,
     },
     {
@@ -37,6 +47,7 @@ export default function Services() {
       badge: 'Ready To Use',
       description: 'Premium quality discord accounts with unique age tags and clean profiles.',
       features: ['High-Quality Aged IDs', 'Instant Delivery Format', 'Secure & Full Ownership'],
+      link: sellAuthLink,
       icon: Shield,
     },
     {
@@ -45,6 +56,7 @@ export default function Services() {
       badge: 'Bulk Stock',
       description: 'High durability automated tokens verified using top-tier mail systems.',
       features: ['Email Verified Accounts', 'Highly Stable Token Supply', 'Perfect for Developer APIs'],
+      link: sellAuthLink,
       icon: Mail,
     },
     {
@@ -53,6 +65,7 @@ export default function Services() {
       badge: 'Premium Quality',
       description: 'Double-verified accounts equipped with both email and premium phone binding.',
       features: ['Fully Phone & Email Verified', 'Aesthetic Profile Assets', 'Highly Resistant to Flagging'],
+      link: sellAuthLink,
       icon: CheckCircle2,
     },
   ];
@@ -66,7 +79,7 @@ export default function Services() {
       <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-3">Our Offerings</h2>
@@ -87,11 +100,10 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`glass-panel p-8 rounded-3xl relative flex flex-col justify-between overflow-hidden group ${
-                service.popular 
-                  ? 'border-2 border-primary/50 shadow-2xl shadow-primary/10' 
-                  : 'border border-white/5 hover:border-primary/20'
-              } transition-all duration-300`}
+              className={`glass-panel p-8 rounded-3xl relative flex flex-col justify-between overflow-hidden group ${service.popular
+                ? 'border-2 border-primary/50 shadow-2xl shadow-primary/10'
+                : 'border border-white/5 hover:border-primary/20'
+                } transition-all duration-300`}
             >
               {/* Top accent line for popular card */}
               {service.popular && (
@@ -104,11 +116,10 @@ export default function Services() {
                   <div className="p-3 rounded-2xl bg-white/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
                     <service.icon className="w-6 h-6" />
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider ${
-                    service.popular
-                      ? 'bg-primary text-white shadow-md shadow-primary/20'
-                      : 'bg-white/5 text-gray-400'
-                  }`}>
+                  <span className={`px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider ${service.popular
+                    ? 'bg-primary text-white shadow-md shadow-primary/20'
+                    : 'bg-white/5 text-gray-400'
+                    }`}>
                     {service.badge}
                   </span>
                 </div>
@@ -121,7 +132,7 @@ export default function Services() {
                   <span className="text-gray-400 text-xs sm:text-sm">Starts from</span>
                   <span className="text-3xl font-extrabold text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">{service.price}</span>
                 </div>
-                
+
                 <p className="text-gray-400 text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
@@ -152,14 +163,13 @@ export default function Services() {
 
               {/* Purchase Button */}
               <a
-                href="[SELLAUTH_LINK]"
+                href={service.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-full py-4 px-6 rounded-2xl font-bold text-sm tracking-wide text-center flex items-center justify-center gap-2 group-hover:scale-102 transition-all duration-300 ${
-                  service.popular
-                    ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/20'
-                    : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
-                }`}
+                className={`w-full py-4 px-6 rounded-2xl font-bold text-sm tracking-wide text-center flex items-center justify-center gap-2 group-hover:scale-102 transition-all duration-300 ${service.popular
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/20'
+                  : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
+                  }`}
               >
                 <ShoppingBag className="w-4 h-4" />
                 Purchase Product

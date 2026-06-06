@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Sparkles } from 'lucide-react';
 
+import config from '../../config.json';
+
+const sellAuthLink: string = config.sellAuthLink;
+const discordLink: string = config.discordLink;
+const telegramLink: string = config.telegramLink;
+
 interface HeroProps {
   onOrderClick: () => void;
 }
@@ -60,14 +66,14 @@ export default function Hero({ onOrderClick }: HeroProps) {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <button
-            onClick={onOrderClick}
+            onClick={sellAuthLink ? () => window.open(sellAuthLink, '_blank') : onOrderClick}
             className="w-full sm:w-auto px-8 py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-primary to-secondary hover:from-primary/95 hover:to-secondary/95 shadow-xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 transform scale-100 hover:scale-103 active:scale-97 flex items-center justify-center gap-2 cursor-pointer"
           >
             <Zap className="w-5 h-5 fill-white/10" />
             Buy Now (SellAuth)
           </button>
           <a
-            href="[DISCORD_LINK]"
+            href={discordLink}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 rounded-2xl text-base font-bold text-gray-300 hover:text-white glass-panel hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
