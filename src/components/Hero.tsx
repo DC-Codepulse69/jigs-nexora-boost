@@ -5,7 +5,6 @@ import config from '../../config.json';
 
 const sellAuthLink: string = config.sellAuthLink;
 const discordLink: string = config.discordLink;
-const telegramLink: string = config.telegramLink;
 
 interface HeroProps {
   onOrderClick: () => void;
